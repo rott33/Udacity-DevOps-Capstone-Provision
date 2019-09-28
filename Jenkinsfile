@@ -3,12 +3,12 @@ pipeline {
 		awsRegion = 'us-east-2'
 		awsCredentials = 'aws-jenkins'
 	}
-    agent any
+	agent any
 
-    stages {
-        stage('Create EKS Cluster') {
-            steps {
-            	withAWS(region:awsRegion, credentials:awsCredentials) {
+	stages {
+		stage('Create EKS Cluster') {
+			steps {
+				withAWS(region:awsRegion, credentials:awsCredentials) {
 					sh '''
 						eksctl create cluster \
 						--name udacity \
@@ -21,8 +21,8 @@ pipeline {
 						--nodes-max 4 \
 						--node-ami auto
 					'''
-            	}
-            }
-        }     
-    }
+				}
+			}
+		}     
+	}
 }
